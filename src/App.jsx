@@ -9,23 +9,23 @@ import Dashboard from "./pages/Dashboard";
 
 export default function App() {
   return (
-    <div className="min-h-screen w-full bg-gray-100">
+    <div className="min-h-screen w-full bg-gray-100 flex flex-col">
 
       {/* Navbar */}
-      <nav className="bg-blue-600 text-white px-6 py-4 flex justify-between">
-        <h1 className="text-xl font-bold">StudyBuddy</h1>
-        <div className="space-x-4">
-          <Link className="text-white hover:text-gray-200" to="/">Home</Link>
-          <Link className="text-white hover:text-gray-200" to="/dashboard">Dashboard</Link>
-          <Link className="text-white hover:text-gray-200" to="/upload">Upload</Link>
-          <Link className="text-white hover:text-gray-200" to="/search">Search</Link>
-          <Link className="text-white hover:text-gray-200" to="/roadmaps">Roadmaps</Link>
-          <Link className="text-white hover:text-gray-200" to="/admin">Admin</Link>
+      <nav className="bg-blue-500 text-white px-6 py-4 flex justify-between shadow-md">
+        <h1 className="text-2xl font-bold">StudyBuddy</h1>
+        <div className="space-x-4 flex items-center">
+          <Link className="text-gray-100 hover:text-yellow-200" to="/">Home</Link>
+          <Link className="text-gray-100 hover:text-yellow-200" to="/dashboard">Dashboard</Link>
+          <Link className="text-gray-100 hover:text-yellow-200" to="/upload">Upload</Link>
+          <Link className="text-gray-100 hover:text-yellow-200" to="/search">Search</Link>
+          <Link className="text-gray-100 hover:text-yellow-200" to="/roadmaps">Roadmaps</Link>
+          <Link className="text-gray-100 hover:text-yellow-200" to="/admin">Admin</Link>
         </div>
       </nav>
 
       {/* Pages */}
-      <div className="p-6">
+      <main className="flex-1 p-6">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -35,9 +35,8 @@ export default function App() {
           <Route path="/roadmaps/:id" element={<RoadmapDetails />} />
           <Route path="/admin" element={<AdminPanel />} />
         </Routes>
-        
+      </main>
 
-      </div>
     </div>
   );
 }
