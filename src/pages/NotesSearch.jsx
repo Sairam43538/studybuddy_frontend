@@ -1,3 +1,4 @@
+// src/pages/NotesSearch.jsx
 import { useState, useEffect } from "react";
 import { searchNotes, upvoteNote } from "../services/notesService";
 

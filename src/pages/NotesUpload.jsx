@@ -1,3 +1,4 @@
+// src/pages/NotesUpload.jsx
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaCloudUploadAlt } from "react-icons/fa";

@@ -1,3 +1,4 @@
+// src/pages/RoadmapDetails.jsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getRoadmapDetails, getCertification } from "../services/roadmapService";

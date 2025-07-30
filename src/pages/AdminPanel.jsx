@@ -1,3 +1,4 @@
+// src/pages/AdminPanel.jsx
 export default function AdminPanel() {
   return (
     <div>
