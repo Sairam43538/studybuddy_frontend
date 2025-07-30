@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, UploadCloud, Compass, Users, Star, Clock, Calendar, ChevronRight, Bell, FileText, CheckCircle, ArrowRight } from 'lucide-react';
+import { BookOpen, UploadCloud, Compass, Users, Star, Clock, Calendar, ChevronRight, Bell, FileText, CheckCircle, ArrowRight, Bookmark } from 'lucide-react';
 
 // Mock Data - Replace with API calls later
 const user = {
@@ -12,9 +12,10 @@ const stats = {
   upvotesReceived: 128,
 };
 
-const upcomingSessions = [
-  { id: 1, title: "Quantum Mechanics Revision", subject: "PHYS-201", time: "8:00 PM", in: "30 minutes" },
-  { id: 2, title: "Data Structures & Algorithms", subject: "CS-303", time: "Tomorrow, 10:00 AM", in: "14 hours" },
+const savedNotes = [
+  { id: 1, title: "Quantum Entanglement Explained", subject: "PHYS-201" },
+  { id: 2, title: "Big O Notation Cheatsheet", subject: "CS-303" },
+  { id: 3, title: "The Krebs Cycle Diagram & Notes", subject: "BIO-101" },
 ];
 
 const recentActivity = [
@@ -87,36 +88,31 @@ export default function Dashboard() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column: Upcoming Sessions & Quick Actions */}
+          {/* Left Column: Saved Notes & Quick Actions */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Upcoming Study Sessions */}
+            {/* Saved Notes */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">Upcoming Study Sessions</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">Your Saved Notes</h2>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm space-y-4">
-                {upcomingSessions.length > 0 ? (
-                  upcomingSessions.map(session => (
-                    <div key={session.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                {savedNotes.length > 0 ? (
+                  savedNotes.map(note => (
+                    <div key={note.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                       <div className="flex items-center space-x-4 mb-3 sm:mb-0">
-                        <div className="p-3 bg-indigo-100 dark:bg-indigo-900/50 rounded-full">
-                          <Calendar className="w-6 h-6 text-indigo-600 dark:text-indigo-300" />
+                        <div className="p-3 bg-blue-100 dark:bg-blue-900/50 rounded-full">
+                          <Bookmark className="w-6 h-6 text-blue-600 dark:text-blue-300" />
                         </div>
                         <div>
-                          <p className="font-semibold text-gray-800 dark:text-white">{session.title}</p>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">
-                            {session.subject} &bull; Starts {session.time}
-                          </p>
+                          <p className="font-semibold text-gray-800 dark:text-white">{note.title}</p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">{note.subject}</p>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-4 w-full sm:w-auto">
-                         <p className="text-sm text-indigo-500 font-medium w-full text-left sm:w-auto sm:text-right">In {session.in}</p>
-                         <button className="flex items-center justify-center w-full sm:w-auto px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105">
-                           Join Room <ArrowRight className="w-4 h-4 ml-2" />
-                         </button>
-                      </div>
+                      <button className="flex items-center justify-center w-full sm:w-auto px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                        View Note <ArrowRight className="w-4 h-4 ml-2" />
+                      </button>
                     </div>
                   ))
                 ) : (
-                  <p className="text-center text-gray-500 dark:text-gray-400 py-8">No upcoming sessions scheduled. Time to plan!</p>
+                  <p className="text-center text-gray-500 dark:text-gray-400 py-8">You haven't saved any notes yet.</p>
                 )}
               </div>
             </section>
