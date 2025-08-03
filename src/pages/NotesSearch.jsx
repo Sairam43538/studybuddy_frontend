@@ -1,5 +1,5 @@
 // src/pages/NotesSearch.jsx
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { searchNotes, upvoteNote } from "../services/notesService";
 
 export default function NotesSearch() {
@@ -15,10 +15,6 @@ export default function NotesSearch() {
     await upvoteNote(id);
     handleSearch();
   };
-  const { user } = useAuth();
-
-
-
 
   return (
     <div className="max-w-2xl mx-auto p-6">
@@ -26,25 +22,25 @@ export default function NotesSearch() {
         <input
           type="text"
           placeholder="Search notes"
-          className="flex-1 border p-2 rounded"
+          className="flex-1 border p-2 rounded text-black placeholder-gray-500"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
         <button
           onClick={handleSearch}
-          className="bg-blue-600 text-white px-4 py-2 rounded"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
         >
           Search
         </button>
       </div>
 
       {results.map((note) => (
-        <div key={note._id} className="bg-white p-4 shadow rounded mb-2 flex justify-between">
+        <div key={note._id} className="bg-gray-900 p-4 shadow rounded mb-2 flex justify-between text-white">
           <div>
-            <h3 className="font-bold">{note.title}</h3>
-            <p className="text-gray-600 text-sm">{note.keywords.join(", ")}</p>
+            <h3 className="font-bold text-white">{note.title}</h3>
+            <p className="text-gray-300 text-sm">{note.keywords.join(", ")}</p>
             {note.is_teacher_recommended && (
-              <span className="text-green-600 font-semibold">Teacher Recommended</span>
+              <span className="text-green-400 font-semibold">Teacher Recommended</span>
             )}
           </div>
           <button
